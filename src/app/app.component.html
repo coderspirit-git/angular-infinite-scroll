@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+<div  
+class="search-results"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()"
+>
+<div class="row pt-5">
+  <div class="col-md-4 p-2" *ngFor="let post of allpost">
+   <!-- single post card -->
+    <div class="card shadow">
+     <div class="card-body">
+      <h5 class="card-title text-center ">{{post.name}} {{post.id}}</h5>
+      <p class="card-text">{{post.dis}}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>  
+      </div>
+    </div>
+   </div>
+</div> 
+</div>
+<!-- sinner -->
+<div class="row pb-5">
+    <div class="col-md-12 p-5">
+    <ngx-spinner
+    bdOpacity = 0.9
+    bdColor = ""
+    size = "default"
+    color = "#581f87"
+    type = "ball-pulse-sync"
+    [fullScreen] = "false"
+    >
+    </ngx-spinner>
+  </div>
+</div>
+<!-- Alert no more post -->
+<div *ngIf = "!notEmptyPost" class="row pb-5">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="text-muted h6 alert alert-secondary p-2">No more items to show</div>
+  </div>
+</div>
+</div> 
+</body>
+</html>
